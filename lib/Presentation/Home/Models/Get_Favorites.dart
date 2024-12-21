@@ -13,15 +13,7 @@ class GetFavorites {
   dynamic message;
   Data? data;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    map['message'] = message;
-    if (data != null) {
-      map['data'] = data?.toJson();
-    }
-    return map;
-  }
+
 
 }
 
@@ -33,42 +25,29 @@ class Data {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data?.add(Data.fromJson(v));
+        data?.add(FavoriteData.fromJson(v));
       });
     }
   }
-  List<Data>? data;
+  List<FavoriteData>? data;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (data != null) {
-      map['data'] = data?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
+
 
 }
 
-class Data {
-  Data({
+class FavoriteData {
+  FavoriteData({
       this.id, 
       this.product,});
 
-  Data.fromJson(dynamic json) {
+  FavoriteData.fromJson(dynamic json) {
     id = json['id'];
     product = json['product'] != null ? Product.fromJson(json['product']) : null;
   }
   num? id;
   Product? product;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    if (product != null) {
-      map['product'] = product?.toJson();
-    }
-    return map;
-  }
+
 
 }
 
@@ -99,16 +78,6 @@ class Product {
   String? name;
   String? description;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['price'] = price;
-    map['old_price'] = oldPrice;
-    map['discount'] = discount;
-    map['image'] = image;
-    map['name'] = name;
-    map['description'] = description;
-    return map;
-  }
+
 
 }

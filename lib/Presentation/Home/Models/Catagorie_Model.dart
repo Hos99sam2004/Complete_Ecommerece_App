@@ -1,13 +1,15 @@
 class CatagorieModel {
   CatagorieModel({
-      this.status,
-      this.message,
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   CatagorieModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? CatagorieModelData.fromJson(json['data']) : null;
+    data =
+        json['data'] != null ? CatagorieModelData.fromJson(json['data']) : null;
   }
   bool? status;
   String? message;
@@ -22,12 +24,12 @@ class CatagorieModel {
     }
     return map;
   }
-
 }
 
 class CatagorieModelData {
   CatagorieModelData({
-      this.data,});
+    this.data,
+  });
 
   CatagorieModelData.fromJson(dynamic json) {
     if (json['data'] != null) {
@@ -46,14 +48,14 @@ class CatagorieModelData {
     }
     return map;
   }
-
 }
 
 class CatagorieData {
   CatagorieData({
-      this.id,
-      this.name,
-      this.image,});
+    this.id,
+    this.name,
+    this.image,
+  });
 
   CatagorieData.fromJson(dynamic json) {
     id = json['id'];
@@ -71,5 +73,4 @@ class CatagorieData {
     map['image'] = image;
     return map;
   }
-
 }

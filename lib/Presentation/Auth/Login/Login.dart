@@ -5,7 +5,7 @@ import 'package:complete_e_commerce_app/Presentation/Auth/Test.dart';
 import 'package:complete_e_commerce_app/Presentation/Componanats/Colors.dart';
 import 'package:complete_e_commerce_app/Presentation/Componanats/Defaultbuttom.dart';
 import 'package:complete_e_commerce_app/Presentation/Componanats/TextFormField.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/MainHome.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/MainHome.dart';
 // import 'package:complete_e_commerce_app/Presentation/Home_page/Widgets/Home.dart';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/HomePage.dart';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/Splash5.dart';
@@ -55,20 +55,6 @@ class _LoginState extends State<Login> {
             height: double.infinity,
             child: Stack(
               children: [
-                // Positioned(
-                //   top: 0,
-                //   left: 0,
-                //   right: 0,
-                //   child: Container(
-                //     height: MediaQuery.sizeOf(context).height * 0.55,
-                //     decoration: BoxDecoration(
-                //       image: DecorationImage(
-                //         image: AssetImage('assets/woman-with-shopping-list-standing-by-fridge-supermarket-checking-cart 1.png'), // Add your image path
-                //         fit: BoxFit.fill,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 Image.asset(
                     'assets/woman-with-shopping-list-standing-by-fridge-supermarket-checking-cart 1.png'),
                 Positioned(

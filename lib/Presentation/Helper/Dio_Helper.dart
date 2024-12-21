@@ -6,27 +6,37 @@ class ApiHelper {
   static ApiHelper instance = ApiHelper._();
   static final Dio _dio = Dio(
     BaseOptions(baseUrl: ApiConst.BASE_URL, headers: {
-      "lang": "en",
+      "lang": "ar",
       "Content-Type": "application/json",
+      // "Authorization": ApiConst.Access_TOKEN,
     }),
   );
   Future<Response> post({
     required String url,
     Map<String, dynamic>? body,
     Map<String, dynamic>? Quiryparams,
+    Map<String, dynamic>? headers,
+
   }) async {
     try {
       final response =
-          await _dio.post(url, queryParameters: Quiryparams, data: body);
+          await _dio.post(url, queryParameters: Quiryparams, data: body,options: Options(
+            headers: headers,
+          ),);
       return response;
     } on DioException catch (e) {
       throw e;
     }
   }
 
-  Future<Response> get(String url) async {
+  Future<Response> get({
+    required String url,
+    Map<String, dynamic>? headers,
+  }) async {
     try {
-      final response = await _dio.get(url);
+      final response = await _dio.get(url,options: Options(
+        headers: headers,
+      ),);
       return response;
     } on DioException catch (e) {
       throw e;

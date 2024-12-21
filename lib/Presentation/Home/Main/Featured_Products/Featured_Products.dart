@@ -1,11 +1,11 @@
-import 'package:complete_e_commerce_app/Presentation/Home_page/Cubit/home_cubit.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Products/Products_Details.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Products/Products_Details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-import '../../Componanats/Colors.dart';
+import '../../../Componanats/Colors.dart';
 
 class Featured_Products extends StatefulWidget {
   Featured_Products({
@@ -18,14 +18,12 @@ class Featured_Products extends StatefulWidget {
 
 class _Featured_ProductsState extends State<Featured_Products> {
   @override
-
-
   Widget build(BuildContext context) {
     final cubit = context.read<HomeCubit>();
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeProductsLoading) {
-          return  Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator());
         } else if (state is HomeProductsError) {
           return Center(child: Text("${state.msg}"));
         } else
@@ -43,7 +41,7 @@ class _Featured_ProductsState extends State<Featured_Products> {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    Get.to(()=>ProductsDetails(index: index));
+                    Get.to(() => ProductsDetails(index: index));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -56,31 +54,34 @@ class _Featured_ProductsState extends State<Featured_Products> {
                               const Spacer(),
                               IconButton(
                                   onPressed: () {
-
                                     cubit.addToFavorites(index);
-
                                   },
                                   icon: cubit.favorites == false
-                                      ? Icon(CupertinoIcons.heart,color: Colors.red,
-                                  size: 25,)
+                                      ? Icon(
+                                          CupertinoIcons.heart,
+                                          color: Colors.red,
+                                          size: 25,
+                                        )
                                       : Icon(
                                           CupertinoIcons.heart_solid,
-                                    color: Colors.red,
-                                    size: 33,
+                                          color: Colors.red,
+                                          size: 33,
                                         )),
                             ],
                           ),
                           ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Container(
-                                  height: 100,
-                                  child: Hero(
-                                    tag: cubit.productlist[index].id.toString(),
-                                    child: Image.network(
-                                      cubit.productlist[index].image ?? "",
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),),),
+                            borderRadius: BorderRadius.circular(50),
+                            child: Container(
+                              height: 100,
+                              child: Hero(
+                                tag: cubit.productlist[index].id.toString(),
+                                child: Image.network(
+                                  cubit.productlist[index].image ?? "",
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          ),
                           const SizedBox(height: 5),
                           Text(cubit.productlist[index].price.toString()),
                           const SizedBox(height: 5),

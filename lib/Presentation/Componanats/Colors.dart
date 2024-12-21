@@ -13,31 +13,37 @@ Color primarydark = const Color(0xFF6CC51D);
 Color primarylight = const Color(0xFFEBFFD7);
 List<Color> gcolors = [primary, primarydark];
 
- void ShowToast( {required String text,required ToastState state } ) => Fluttertoast.showToast(
-     msg: text,
-     toastLength: Toast.LENGTH_SHORT,
-     gravity: ToastGravity.CENTER,
-     timeInSecForIosWeb: 1,
-     backgroundColor: ToastColor(state),
-     textColor: Colors.white,
-     fontSize: 16.0
- );
-enum ToastState {SUCCESS,ERROR,WARNING,}
-Color? ToastColor (ToastState state){
-   Color color ;
-switch (state){
-  case ToastState.SUCCESS:
-   color= Colors.green;
-   break;
-    // TODO: Handle this case.
-  case ToastState.ERROR:
-   color= Colors.red;
-   break;
-    // TODO: Handle this case.
-  case ToastState.WARNING:
-   color= Colors.amber;
-   break;
-    // TODO: Handle this case.
+void ShowToast({required String text, required ToastState state}) =>
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: ToastColor(state),
+        textColor: Colors.white,
+        fontSize: 16.0);
+
+enum ToastState {
+  SUCCESS,
+  ERROR,
+  WARNING,
 }
- return color;
+
+Color? ToastColor(ToastState state) {
+  Color color;
+  switch (state) {
+    case ToastState.SUCCESS:
+      color = Colors.green;
+      break;
+    // TODO: Handle this case.
+    case ToastState.ERROR:
+      color = Colors.red;
+      break;
+    // TODO: Handle this case.
+    case ToastState.WARNING:
+      color = Colors.amber;
+      break;
+    // TODO: Handle this case.
+  }
+  return color;
 }

@@ -1,26 +1,21 @@
-
-
-import 'package:complete_e_commerce_app/Presentation/Home_page/Cubit/home_cubit.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Products/Other_products_Details.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Products/Products_Details.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Products/Other_products_Details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-
-import '../../Componanats/Colors.dart';
+import '../../../Componanats/Colors.dart';
 
 class Other_Products extends StatelessWidget {
-   Other_Products({
+  Other_Products({
     super.key,
   });
 
   @override
-
   Widget build(BuildContext context) {
     final cubit = context.read<HomeCubit>();
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-    final pro = cubit.productsmodel.data?.data;
+        final pro = cubit.productsmodel.data?.data;
         if (state is HomeProductsLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is HomeProductsError) {
@@ -40,7 +35,9 @@ class Other_Products extends StatelessWidget {
               itemBuilder: (context, index2) {
                 return InkWell(
                   onTap: () {
-                    Get.to(()=>Other_Products_Details(index2: index2, ));
+                    Get.to(() => Other_Products_Details(
+                          index2: index2,
+                        ));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -52,17 +49,18 @@ class Other_Products extends StatelessWidget {
                             children: [
                               const Spacer(),
                               IconButton(
-                                  onPressed: () {
-                                    cubit.addToFavorites(index2,);
-                                  },
-                                  icon: cubit.favorites == false
-                                      ? Icon(Icons.favorite_outline,color: Colors.red,
-                                    size: 25,)
-                                      : Icon(
-                                  Icons.favorite,
-                                    color: Colors.red,
-                                    size: 33,
-                                  )),
+                                onPressed: () {
+                                  print(pro[index2].id);
+                                  cubit.ChangeFavor(pro[index2].id as int);
+                                },
+                                icon: cubit.favoritelist[pro![index2].id]!
+                                    ? Icon(Icons.favorite,
+                                        color: Colors.red, size: 33)
+                                    : Icon(
+                                        Icons.favorite_outline,
+                                        color: Colors.red,
+                                      ),
+                              ),
                             ],
                           ),
                           ClipRRect(
@@ -70,16 +68,21 @@ class Other_Products extends StatelessWidget {
                             child: Container(
                               height: 100,
                               child: Hero(
-                                tag:pro![index2].id.toString(),
+                                tag: pro![index2].id.toString(),
                                 child: Image.network(
-                                  pro?[index2].image ?? "",
+                                  pro[index2].image ?? "",
                                   fit: BoxFit.fill,
                                 ),
-                              ),),),
+                              ),
+                            ),
+                          ),
                           const SizedBox(height: 5),
-                          Text(pro![index2].price.toString()),
+                          Text(pro[index2].price.toString()),
                           const SizedBox(height: 5),
-                          Text( pro?[index2].name ?? "",style: TextStyle(overflow: TextOverflow.ellipsis),  ),
+                          Text(
+                            pro[index2].name ?? "",
+                            style: TextStyle(overflow: TextOverflow.ellipsis),
+                          ),
                           const Divider(),
                           InkWell(
                             onTap: () {},

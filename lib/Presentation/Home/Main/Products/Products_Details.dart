@@ -1,7 +1,7 @@
 import 'package:complete_e_commerce_app/Presentation/Componanats/Colors.dart';
 import 'package:complete_e_commerce_app/Presentation/Componanats/Defaultbuttom.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Cubit/home_cubit.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/MainHome.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/MainHome.dart';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,6 @@ class ProductsDetails extends StatelessWidget {
   ProductsDetails({super.key, required this.index});
 
   @override
-
   Widget build(
     BuildContext context,
   ) {
@@ -60,7 +59,6 @@ class ProductsDetails extends StatelessWidget {
                     Spacer(),
                     IconButton(
                         onPressed: () {
-
                           cubit.addToFavorites(index);
                         },
                         icon: cubit.favorites == false
@@ -78,7 +76,9 @@ class ProductsDetails extends StatelessWidget {
                 ),
                 Text(cubit.productlist[index].title.toString(),
                     style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold, color: text2)),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: text2)),
                 Row(
                   children: [
                     Text(
@@ -89,13 +89,37 @@ class ProductsDetails extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(width: 10,),
-                    Icon(Icons.star,size: 25,color: Colors.yellowAccent,),
-                    Icon(Icons.star,size: 25,color: Colors.yellowAccent,),
-                    Icon(Icons.star,size: 25,color: Colors.yellowAccent,),
-                    Icon(Icons.star,size: 25,color: Colors.yellowAccent,),
-                    Icon(Icons.star_half,size: 25,color: Colors.yellowAccent,),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.star,
+                      size: 25,
+                      color: Colors.yellowAccent,
+                    ),
+                    Icon(
+                      Icons.star,
+                      size: 25,
+                      color: Colors.yellowAccent,
+                    ),
+                    Icon(
+                      Icons.star,
+                      size: 25,
+                      color: Colors.yellowAccent,
+                    ),
+                    Icon(
+                      Icons.star,
+                      size: 25,
+                      color: Colors.yellowAccent,
+                    ),
+                    Icon(
+                      Icons.star_half,
+                      size: 25,
+                      color: Colors.yellowAccent,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text(
                       "( ${cubit.productlist[index].rating!.count.toString()}  reviews ... )",
                       style: TextStyle(
@@ -104,8 +128,11 @@ class ProductsDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(cubit.productlist[index].description.toString()),
+
                 /// "Quantity of products available for the product"
                 Container(
                   height: 50,
@@ -113,31 +140,54 @@ class ProductsDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: backgraund1,
                     borderRadius: BorderRadius.circular(10),
-
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      Text("Quantity",style: TextStyle(
-                        fontSize: 18,
-          
-                      )),
+                      Text("Quantity",
+                          style: TextStyle(
+                            fontSize: 18,
+                          )),
                       Spacer(),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.exposure_minus_1,size: 25,color: primarydark,)),
-          
-                      Text("5",style: TextStyle(
-                        fontSize: 18,
-                        color: text2,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.plus_one,size: 25,color: primarydark,)),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.exposure_minus_1,
+                            size: 25,
+                            color: primarydark,
+                          )),
+                      Text(
+                        "5",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: text2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.plus_one,
+                            size: 25,
+                            color: primarydark,
+                          )),
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 InkWell(
-                    onTap: () { Get.to(()=> Homepage()); },
-                    child: defaultbuttom(text: "Add To Cart",height: 50,textColor: backgraund1,prefixicon: Icons.shopping_bag_outlined,Pisvisible: true,Sisvisible: true)),
+                    onTap: () {
+                      Get.to(() => Homepage());
+                    },
+                    child: defaultbuttom(
+                        text: "Add To Cart",
+                        height: 50,
+                        textColor: backgraund1,
+                        prefixicon: Icons.shopping_bag_outlined,
+                        Pisvisible: true,
+                        Sisvisible: true)),
               ],
             ),
           ),

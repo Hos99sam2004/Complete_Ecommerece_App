@@ -2,8 +2,8 @@ import 'package:complete_e_commerce_app/Presentation/Auth/Auth_Welcome.dart';
 import 'package:complete_e_commerce_app/Presentation/Auth/Login/Cubit/login_cubit.dart';
 import 'package:complete_e_commerce_app/Presentation/Auth/Sign_up/Cubit/sign_cubit.dart';
 import 'package:complete_e_commerce_app/Presentation/Helper/Cache_Helper.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Cubit/home_cubit.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/MainHome.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/MainHome.dart';
 // import 'dart:async';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -14,23 +14,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
-  Widget? widget ;
+  Widget? widget;
   bool? Onboarding = CacheHelper.getData(key: "Onboarding");
-  String? token = CacheHelper.getData(key: "token");
-  if(Onboarding != null){
-    if(token != null ) widget = Mainhome();
-    else widget = AuthWelcome();
-  }else{
+  final String? token = CacheHelper.getData(key: "token");
+  if (Onboarding != null) {
+    if (token != null)
+      widget = Mainhome();
+    else
+      widget = AuthWelcome();
+  } else {
     widget = Homepage();
   }
 
-   runApp(MyApp(startwidget: widget,));
+  runApp(MyApp(
+    startwidget: widget,
+  ));
 }
 
 class MyApp extends StatelessWidget {
   final Widget? startwidget;
 
-  const MyApp({super.key,  this.startwidget});
+  const MyApp({super.key, this.startwidget});
 
   // This widget is the root of your application.
   @override
@@ -48,9 +52,10 @@ class MyApp extends StatelessWidget {
                 ..getbanner()
                 ..getCatagorieList()
                 ..getProducts()
-                ..otherProducts()),
+                ..otherProducts()
+                ..GetFavoritesData()),
         ],
-        child:  GetMaterialApp(
+        child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
           home: startwidget,
         ));

@@ -1,11 +1,9 @@
-
 import 'package:complete_e_commerce_app/Presentation/Componanats/Colors.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Featured_Products/Featured_Products.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/MainHome.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Products/Other_Products.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Featured_Products/Featured_Products.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/MainHome.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Products/Other_Products.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class AllProducts extends StatelessWidget {
   const AllProducts({super.key});
@@ -15,11 +13,13 @@ class AllProducts extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-      
-          title: Text('All Products',style: TextStyle(color: primarydark),),
+          title: Text(
+            'All Products',
+            style: TextStyle(color: primarydark),
+          ),
           centerTitle: true,
           backgroundColor: backgraund1,
-          leading:  IconButton(
+          leading: IconButton(
               onPressed: () {
                 Get.to(() => Mainhome());
               },
@@ -28,17 +28,13 @@ class AllProducts extends StatelessWidget {
         body: PageView(
           scrollDirection: Axis.horizontal,
           children: [
-          ListView(
-            children: [
-              Container(
-                  height: 800,
-                  child: Featured_Products()
-              ),
-            ],
-          ),
+            ListView(
+              children: [
+                Container(height: 800, child: Featured_Products()),
+              ],
+            ),
             Other_Products()
-        ],
-      
+          ],
         ),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:complete_e_commerce_app/Presentation/Auth/Sign_up/Cubit/sign_cub
 import 'package:complete_e_commerce_app/Presentation/Componanats/Colors.dart';
 import 'package:complete_e_commerce_app/Presentation/Componanats/Defaultbuttom.dart';
 import 'package:complete_e_commerce_app/Presentation/Componanats/TextFormField.dart';
-import 'package:complete_e_commerce_app/Presentation/Home_page/Screens/Home.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/HomePage/Home.dart';
 // import 'package:complete_e_commerce_app/Presentation/Home_page/Widgets/Home.dart';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/HomePage.dart';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/Splash5.dart';
@@ -32,15 +32,19 @@ class _SignUpState extends State<SignUp> {
     return BlocListener<SignCubit, SignState>(
       listener: (context, state) {
         // TODO: implement listener
-        if(state is SignSuccess)
-        {
-          Get.snackbar("Success: ",state.msg ,backgroundColor: Colors.green,colorText: Colors.white ,duration: Duration(milliseconds: 500));
+        if (state is SignSuccess) {
+          Get.snackbar("Success: ", state.msg,
+              backgroundColor: Colors.green,
+              colorText: Colors.white,
+              duration: Duration(milliseconds: 500));
 
-        Get.to( ()=>  HomeScreen() ) ;
+          Get.to(() => HomeScreen());
         }
-        if(state is SignError)
-        {
-        Get.snackbar("Error: ",state.msg ,backgroundColor: Colors.red,colorText: Colors.white ,duration: Duration(milliseconds: 500));
+        if (state is SignError) {
+          Get.snackbar("Error: ", state.msg,
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: Duration(milliseconds: 500));
         }
       },
       child: Scaffold(
@@ -83,7 +87,6 @@ class _SignUpState extends State<SignUp> {
                       color: backgraund2,
                       borderRadius: BorderRadius.circular(20),
                     ),
-
                     child: Form(
                       key: _formkey,
                       child: Column(
@@ -151,22 +154,27 @@ class _SignUpState extends State<SignUp> {
                           const SizedBox(height: 10),
                           InkWell(
                             onTap: () {
-
                               if (_formkey.currentState!.validate()) {
-                                context.read<SignCubit>().SignUp(email: _email.text, password: _password.text, PhoneNumber: _phoneNumper.text, UserName: _username.text,);
+                                context.read<SignCubit>().SignUp(
+                                      email: _email.text,
+                                      password: _password.text,
+                                      PhoneNumber: _phoneNumper.text,
+                                      UserName: _username.text,
+                                    );
                               }
                             },
-                            child: BlocBuilder<SignCubit, SignState >(
-                        builder: (context, state) {
-                          if (state is SignLoading ){
-                            return const Center(child: CircularProgressIndicator());
-                          }
-                        return defaultbuttom(
-                              textColor: Colors.white,
-                              text: "Signup",
-                            );
-                        },
-                      ),
+                            child: BlocBuilder<SignCubit, SignState>(
+                              builder: (context, state) {
+                                if (state is SignLoading) {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                return defaultbuttom(
+                                  textColor: Colors.white,
+                                  text: "Signup",
+                                );
+                              },
+                            ),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +183,7 @@ class _SignUpState extends State<SignUp> {
                                   style: TextStyle(color: text1, fontSize: 18)),
                               TextButton(
                                 onPressed: () {
-                                  Get.to(()=> Login());
+                                  Get.to(() => Login());
                                 },
                                 child: const Text(
                                   "Login",
@@ -194,7 +202,6 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-
             ],
           ),
         ),

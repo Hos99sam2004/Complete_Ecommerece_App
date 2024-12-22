@@ -11,6 +11,7 @@ import 'package:complete_e_commerce_app/Presentation/Home/Models/Products_Model.
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/FavoritesPage/Favorites.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/HomePage/Home.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/PersonalDetails/Person_Details.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Models/model/model..profile.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -135,7 +136,7 @@ class HomeCubit extends Cubit<HomeState> {
     favoritelist[Id_Product] = !favoritelist[Id_Product]!;
     emit(HomeFavoritesSuccess());
     // print(favoritelist[Id_Product]);
-    print(favoritelist);
+    // print(favoritelist);
     try {
       final response = await ApiHelper.instance.post(
         url: ApiConst.FAVORITES,
@@ -174,7 +175,7 @@ class HomeCubit extends Cubit<HomeState> {
       getFavorites = GetFavorites.fromJson(response.data);
 
       if (getFavorites.status == true) {
-        print(response.data);
+        // print(response.data);
         emit(HomeGetFavoSuccess());
       } else {
         emit(HomeGetFavoError());
@@ -182,6 +183,27 @@ class HomeCubit extends Cubit<HomeState> {
     } catch (e) {
       print("$e");
       emit(HomeGetFavoError());
+    }
+  }
+
+  // GetFavorites getProfileData = GetFavorites();
+  Model modelprofiles = new Model();
+  void getProfile() async {
+    emit(HomeProfileLoading());
+    try {
+      final response = await ApiHelper.instance.get(
+        url: ApiConst.PROFILE,
+        headers: {"Authorization": " ${CacheHelper.getData(key: "token")}"},
+      );
+      modelprofiles = Model.fromJson(response.data);
+      if (getFavorites.status == true) {
+        emit(HomeProfileSuccess());
+      } else {
+        emit(HomeProfileError());
+      }
+    } catch (e) {
+      print("$e");
+      emit(HomeProfileError());
     }
   }
 }

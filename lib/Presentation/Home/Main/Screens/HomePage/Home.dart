@@ -1,7 +1,7 @@
 import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
 
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Search_Function/SearchFunction.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,9 +25,7 @@ class HomeScreen extends StatelessWidget {
         }
       },
       builder: (BuildContext context, state) {
-        if (state is HomeBannerLoading ||
-            state is HomeProductsLoading ||
-            state is HomeCategorieLoading) {
+        if (state is HomeDataLoading) {
           return Center(child: CircularProgressIndicator());
         } else {
           return SafeArea(
@@ -117,12 +115,18 @@ class HomeScreen extends StatelessWidget {
                                       margin: const EdgeInsets.all(10),
                                       height: 70,
                                       width: 80,
-                                      child: Image.network(
-                                        cubit.categoriemodelData.data
-                                                ?.data?[index].image ??
-                                            "",
-                                        fit: BoxFit.cover,
-                                      ),
+                                      child: cubit.categoriemodelData.data
+                                                  ?.data?[index].image !=
+                                              null
+                                          ? Image.network(
+                                              cubit.categoriemodelData.data!
+                                                  .data![index].image!,
+                                              fit: BoxFit.cover,
+                                            )
+                                          : Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            ),
                                     ),
                                     Text(
                                       cubit.categoriemodelData.data

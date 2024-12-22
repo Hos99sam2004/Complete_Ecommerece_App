@@ -27,24 +27,18 @@ class CacheHelper {
     }
   }
 
-  static  getData({
+  static getData({
     required String key,
-  })  {
+  }) {
     return sharedPreference?.get(key);
   }
 
   static Future<bool> RemoveData({
     required String key,
   }) async {
-  return await sharedPreference!.remove(key);
+    return await sharedPreference!.remove(key);
+  }
 }
-
-
-
-
-
-}
-
 
 // import 'package:shared_preferences/shared_preferences.dart';
 

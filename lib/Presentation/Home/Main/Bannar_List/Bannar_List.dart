@@ -43,8 +43,11 @@ class Bannar_List extends StatelessWidget {
                   height: 200,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child:
-                        Image.network(cubit.bannerModel.data?[i].image ?? ""),
+                    child: cubit.bannerModel.data?[i].image != null
+                        ? Image.network(cubit.bannerModel.data?[i].image ?? "")
+                        : Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
                   ),
                 );
               },

@@ -65,7 +65,6 @@ class Splash2 extends StatelessWidget {
                   child: defaultbuttom(
                       text: " Get Started ",
                       textColor: Colors.white,
-
                       radius: 12),
                 )
               ],

@@ -12,35 +12,33 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-        LoginModel loginModel=LoginModel();
-  void login ({
-    required String email ,
-    required String password ,
-}) async {
+  LoginModel loginModel = LoginModel();
+  void login({
+    required String email,
+    required String password,
+  }) async {
     emit(LoginLoading());
     try {
-   final response = await ApiHelper.instance.post(url: ApiConst.LOGIN, body: {
+      final response =
+          await ApiHelper.instance.post(url: ApiConst.LOGIN, body: {
         "email": email,
-        "password":password,
+        "password": password,
       });
-   loginModel =LoginModel.fromJson(response.data);
-    if(loginModel.status==true){
-     CacheHelper.saveData(key: "token", value: loginModel.data?.token).
-     then((value) {
-       ShowToast(text: "Login successful", state: ToastState.SUCCESS);
-       emit(LoginSuccess(loginModel.message!));
-     }
-
-     );
-    }else{
-      ShowToast(text: "Login Error", state: ToastState.WARNING);
-      emit(LoginError(loginModel.message!));
-    }
-    }  catch (e) {
+      loginModel = LoginModel.fromJson(response.data);
+      if (loginModel.status == true) {
+        CacheHelper.saveData(key: "token", value: loginModel.data?.token)
+            .then((value) {
+          ShowToast(text: "Login successful", state: ToastState.SUCCESS);
+          emit(LoginSuccess(loginModel.message!));
+        });
+      } else {
+        ShowToast(text: "Login Error", state: ToastState.WARNING);
+        emit(LoginError(loginModel.message!));
+      }
+    } catch (e) {
       // TODO
       ShowToast(text: "Login Error", state: ToastState.ERROR);
       emit(LoginError("Error: $e"));
     }
-
   }
 }

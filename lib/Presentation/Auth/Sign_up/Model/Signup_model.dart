@@ -4,13 +4,14 @@
 
 class SignupModel {
   SignupModel({
-      bool? status, 
-      String? message, 
-      SignData? data,}){
+    bool? status,
+    String? message,
+    SignData? data,
+  }) {
     _status = status;
     _message = message;
     _data = data;
-}
+  }
 
   SignupModel.fromJson(dynamic json) {
     _status = json['status'];
@@ -34,7 +35,6 @@ class SignupModel {
     }
     return map;
   }
-
 }
 
 /// name : "null"
@@ -46,19 +46,20 @@ class SignupModel {
 
 class SignData {
   SignData({
-      String? name, 
-      String? phone, 
-      String? email, 
-      num? id, 
-      String? image, 
-      String? token,}){
+    String? name,
+    String? phone,
+    String? email,
+    num? id,
+    String? image,
+    String? token,
+  }) {
     _name = name;
     _phone = phone;
     _email = email;
     _id = id;
     _image = image;
     _token = token;
-}
+  }
 
   SignData.fromJson(dynamic json) {
     _name = json['name'];
@@ -92,5 +93,4 @@ class SignData {
     map['token'] = _token;
     return map;
   }
-
 }

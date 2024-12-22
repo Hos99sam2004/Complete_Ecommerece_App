@@ -26,52 +26,42 @@ class _MainhomeState extends State<Mainhome> {
         return Center(child: CircularProgressIndicator());
       return SafeArea(
         child: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Get.to(() => AllProducts());
-            },
-            backgroundColor: primarydark,
-            child: Icon(
-              Icons.shopping_cart_outlined,
-              color: primarylight,
-              size: 33,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Get.to(() => AllProducts());
+              },
+              backgroundColor: primarydark,
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                color: primarylight,
+                size: 33,
+              ),
             ),
-          ),
-          bottomNavigationBar: CurvedNavigationBar(
-            backgroundColor: text1,
-            buttonBackgroundColor: primarydark,
-            items: [
-              Icon(
-                Icons.home_outlined,
-                color: text2,
-                size: 30,
-              ),
-              Icon(
-                Icons.person_2_outlined,
-                color: text2,
-                size: 30,
-              ),
-              Icon(
-                Icons.favorite_outline,
-                color: text2,
-                size: 30,
-              ),
-            ],
-            onTap: (index) {
-              cubit.changeScreen(index);
-            },
-          ),
-          body: BlocBuilder<HomeCubit, HomeState>(
-            builder: (BuildContext context, state) {
-              if (state is HomeBannerLoading ||
-                  state is HomeProductsLoading ||
-                  state is HomeCategorieLoading) {
-                return Center(child: CircularProgressIndicator());
-              } else
-                return cubit.screans[cubit.currentIndex];
-            },
-          ),
-        ),
+            bottomNavigationBar: CurvedNavigationBar(
+              backgroundColor: text1,
+              buttonBackgroundColor: primarydark,
+              items: [
+                Icon(
+                  Icons.home_outlined,
+                  color: text2,
+                  size: 30,
+                ),
+                Icon(
+                  Icons.person_2_outlined,
+                  color: text2,
+                  size: 30,
+                ),
+                Icon(
+                  Icons.favorite_outline,
+                  color: text2,
+                  size: 30,
+                ),
+              ],
+              onTap: (index) {
+                cubit.changeScreen(index);
+              },
+            ),
+            body: cubit.screans[cubit.currentIndex]),
       );
     });
   }

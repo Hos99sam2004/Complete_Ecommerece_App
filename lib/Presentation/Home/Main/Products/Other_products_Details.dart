@@ -12,7 +12,7 @@ class Other_Products_Details extends StatelessWidget {
   int index2;
   Other_Products_Details({super.key, required this.index2});
 
-  @override
+  int Counter = 0;
   Widget build(
     BuildContext context,
   ) {
@@ -42,7 +42,7 @@ class Other_Products_Details extends StatelessWidget {
                       child: Hero(
                         tag: pro![index2].id.toString(),
                         child: Image.network(
-                          pro?[index2].image ?? "",
+                          pro[index2].image ?? "",
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -51,7 +51,7 @@ class Other_Products_Details extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "\$ ${pro![index2].id.toString()}",
+                        "\$ ${pro[index2].id.toString()}",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class Other_Products_Details extends StatelessWidget {
                                 )),
                     ],
                   ),
-                  Text(pro?[index2].name ?? "",
+                  Text(pro[index2].name ?? "",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class Other_Products_Details extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(pro?[index2].description ?? ""),
+                  Text(pro[index2].description ?? ""),
 
                   /// "Quantity of products available for the product"
                   Container(
@@ -104,14 +104,16 @@ class Other_Products_Details extends StatelessWidget {
                             )),
                         Spacer(),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Counter--;
+                            },
                             icon: Icon(
                               Icons.exposure_minus_1,
                               size: 25,
                               color: primarydark,
                             )),
                         Text(
-                          "5",
+                          Counter.toString(),
                           style: TextStyle(
                             fontSize: 18,
                             color: text2,
@@ -119,7 +121,9 @@ class Other_Products_Details extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Counter++;
+                            },
                             icon: Icon(
                               Icons.plus_one,
                               size: 25,

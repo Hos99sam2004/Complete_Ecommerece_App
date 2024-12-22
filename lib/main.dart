@@ -53,7 +53,8 @@ class MyApp extends StatelessWidget {
                 ..getCatagorieList()
                 ..getProducts()
                 ..otherProducts()
-                ..GetFavoritesData()),
+                ..GetFavoritesData()
+                ..getProfile()),
         ],
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,

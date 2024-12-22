@@ -49,7 +49,7 @@ Widget defaultbuttom({
           //   ),
           // ),
           SizedBox(
-            width: Sisvisible == true? 30 : 0,
+            width: Sisvisible == true ? 30 : 0,
           ),
           Text(
             text!,
@@ -59,7 +59,7 @@ Widget defaultbuttom({
                 color: textColor),
           ),
           SizedBox(
-            width: Pisvisible == true? 30 : 0,
+            width: Pisvisible == true ? 30 : 0,
           ),
           Pisvisible == true
               ? Icon(

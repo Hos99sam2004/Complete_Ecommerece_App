@@ -16,13 +16,16 @@ class ApiHelper {
     Map<String, dynamic>? body,
     Map<String, dynamic>? Quiryparams,
     Map<String, dynamic>? headers,
-
   }) async {
     try {
-      final response =
-          await _dio.post(url, queryParameters: Quiryparams, data: body,options: Options(
-            headers: headers,
-          ),);
+      final response = await _dio.post(
+        url,
+        queryParameters: Quiryparams,
+        data: body,
+        options: Options(
+          headers: headers,
+        ),
+      );
       return response;
     } on DioException catch (e) {
       throw e;
@@ -34,9 +37,12 @@ class ApiHelper {
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await _dio.get(url,options: Options(
-        headers: headers,
-      ),);
+      final response = await _dio.get(
+        url,
+        options: Options(
+          headers: headers,
+        ),
+      );
       return response;
     } on DioException catch (e) {
       throw e;

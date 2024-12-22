@@ -4,13 +4,14 @@
 
 class BannerModel {
   BannerModel({
-      bool? status, 
-      dynamic message, 
-      List<BannerData>? data,}){
+    bool? status,
+    dynamic message,
+    List<BannerData>? data,
+  }) {
     _status = status;
     _message = message;
     _data = data;
-}
+  }
 
   BannerModel.fromJson(dynamic json) {
     _status = json['status'];
@@ -39,7 +40,6 @@ class BannerModel {
     }
     return map;
   }
-
 }
 
 /// id : 11
@@ -49,15 +49,16 @@ class BannerModel {
 
 class BannerData {
   BannerData({
-      num? id, 
-      String? image, 
-      dynamic category, 
-      dynamic product,}){
+    num? id,
+    String? image,
+    dynamic category,
+    dynamic product,
+  }) {
     _id = id;
     _image = image;
     _category = category;
     _product = product;
-}
+  }
 
   BannerData.fromJson(dynamic json) {
     _id = json['id'];
@@ -83,5 +84,4 @@ class BannerData {
     map['product'] = _product;
     return map;
   }
-
 }

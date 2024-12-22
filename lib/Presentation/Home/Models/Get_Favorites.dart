@@ -1,8 +1,9 @@
 class GetFavorites {
   GetFavorites({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   GetFavorites.fromJson(dynamic json) {
     status = json['status'];
@@ -12,14 +13,12 @@ class GetFavorites {
   bool? status;
   dynamic message;
   Data? data;
-
-
-
 }
 
 class Data {
   Data({
-      this.data,});
+    this.data,
+  });
 
   Data.fromJson(dynamic json) {
     if (json['data'] != null) {
@@ -30,36 +29,33 @@ class Data {
     }
   }
   List<FavoriteData>? data;
-
-
-
 }
 
 class FavoriteData {
   FavoriteData({
-      this.id, 
-      this.product,});
+    this.id,
+    this.product,
+  });
 
   FavoriteData.fromJson(dynamic json) {
     id = json['id'];
-    product = json['product'] != null ? Product.fromJson(json['product']) : null;
+    product =
+        json['product'] != null ? Product.fromJson(json['product']) : null;
   }
   num? id;
   Product? product;
-
-
-
 }
 
 class Product {
   Product({
-      this.id, 
-      this.price, 
-      this.oldPrice, 
-      this.discount, 
-      this.image, 
-      this.name, 
-      this.description,});
+    this.id,
+    this.price,
+    this.oldPrice,
+    this.discount,
+    this.image,
+    this.name,
+    this.description,
+  });
 
   Product.fromJson(dynamic json) {
     id = json['id'];
@@ -77,7 +73,4 @@ class Product {
   String? image;
   String? name;
   String? description;
-
-
-
 }

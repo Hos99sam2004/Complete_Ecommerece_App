@@ -1,12 +1,13 @@
 class ApiFakeStoreModel {
   ApiFakeStoreModel({
-      this.id, 
-      this.title, 
-      this.price, 
-      this.description, 
-      this.category, 
-      this.image, 
-      this.rating,});
+    this.id,
+    this.title,
+    this.price,
+    this.description,
+    this.category,
+    this.image,
+    this.rating,
+  });
 
   ApiFakeStoreModel.fromJson(dynamic json) {
     id = json['id'];
@@ -38,13 +39,13 @@ class ApiFakeStoreModel {
     }
     return map;
   }
-
 }
 
 class Rating {
   Rating({
-      this.rate, 
-      this.count,});
+    this.rate,
+    this.count,
+  });
 
   Rating.fromJson(dynamic json) {
     rate = json['rate'];
@@ -59,5 +60,4 @@ class Rating {
     map['count'] = count;
     return map;
   }
-
 }

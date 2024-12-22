@@ -1,13 +1,15 @@
 class ProductsModel {
   ProductsModel({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   ProductsModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? Product_Model_Data.fromJson(json['data']) : null;
+    data =
+        json['data'] != null ? Product_Model_Data.fromJson(json['data']) : null;
   }
 
   bool? status;
@@ -23,12 +25,12 @@ class ProductsModel {
     }
     return map;
   }
-
 }
 
 class Product_Model_Data {
   Product_Model_Data({
-      this.data,});
+    this.data,
+  });
 
   Product_Model_Data.fromJson(dynamic json) {
     if (json['data'] != null) {
@@ -47,21 +49,21 @@ class Product_Model_Data {
     }
     return map;
   }
-
 }
 
 class Products {
   Products({
-      this.id, 
-      this.price, 
-      this.oldPrice, 
-      this.discount, 
-      this.image, 
-      this.name, 
-      this.description, 
-      this.images, 
-      this.inFavorites, 
-      this.inCart,});
+    this.id,
+    this.price,
+    this.oldPrice,
+    this.discount,
+    this.image,
+    this.name,
+    this.description,
+    this.images,
+    this.inFavorites,
+    this.inCart,
+  });
 
   Products.fromJson(dynamic json) {
     id = json['id'];
@@ -100,5 +102,4 @@ class Products {
     map['in_cart'] = inCart;
     return map;
   }
-
 }

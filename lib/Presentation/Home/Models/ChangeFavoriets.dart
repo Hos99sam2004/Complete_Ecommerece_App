@@ -1,7 +1,8 @@
 class ChangeFavoriets {
   ChangeFavoriets({
-      this.status, 
-      this.message,});
+    this.status,
+    this.message,
+  });
 
   ChangeFavoriets.fromJson(dynamic json) {
     status = json['status'];
@@ -16,5 +17,4 @@ class ChangeFavoriets {
     map['message'] = message;
     return map;
   }
-
 }

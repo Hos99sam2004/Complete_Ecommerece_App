@@ -4,13 +4,14 @@
 
 class LoginModel {
   LoginModel({
-      bool? status, 
-      String? message, 
-      LoginData? data,}){
+    bool? status,
+    String? message,
+    LoginData? data,
+  }) {
     _status = status;
     _message = message;
     _data = data;
-}
+  }
 
   LoginModel.fromJson(dynamic json) {
     _status = json['status'];
@@ -34,7 +35,6 @@ class LoginModel {
     }
     return map;
   }
-
 }
 
 /// id : 65436
@@ -48,14 +48,15 @@ class LoginModel {
 
 class LoginData {
   LoginData({
-      num? id, 
-      String? name, 
-      String? email, 
-      String? phone, 
-      String? image, 
-      num? points, 
-      num? credit, 
-      String? token,}){
+    num? id,
+    String? name,
+    String? email,
+    String? phone,
+    String? image,
+    num? points,
+    num? credit,
+    String? token,
+  }) {
     _id = id;
     _name = name;
     _email = email;
@@ -64,7 +65,7 @@ class LoginData {
     _points = points;
     _credit = credit;
     _token = token;
-}
+  }
 
   LoginData.fromJson(dynamic json) {
     _id = json['id'];
@@ -106,5 +107,4 @@ class LoginData {
     map['token'] = _token;
     return map;
   }
-
 }

@@ -1,3 +1,4 @@
+import 'package:complete_e_commerce_app/Presentation/Componanats/Colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -8,6 +9,7 @@ class CustomTextform extends StatefulWidget {
   String? title;
   bool obscuretext = false;
   String? Function(String?)? validator;
+  Function(String)? onFieldSubmitted;
   bool ispassword = false;
   bool titlevisible = false;
   IconData? prefixicon;
@@ -21,6 +23,7 @@ class CustomTextform extends StatefulWidget {
     this.mycontroller,
     this.title,
     this.validator,
+    this.onFieldSubmitted,
     this.prefixicon,
     this.ispassword = false,
     this.titlevisible = false,
@@ -38,12 +41,18 @@ class _CustomTextformState extends State<CustomTextform> {
       obscureText: widget.obscuretext,
       validator: widget.validator,
       controller: widget.mycontroller,
+      onFieldSubmitted: widget.onFieldSubmitted,
       decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
           hintText: widget.hinttext,
-          label: widget.titlevisible == true ? Text(widget.title!) : null,
-          hintStyle: const TextStyle(color: Colors.blueGrey, fontSize: 15),
+          label: widget.titlevisible == true
+              ? Text(
+                  widget.title!,
+                  style: TextStyle(color: primarydark, fontSize: 25),
+                )
+              : null,
+          hintStyle: TextStyle(color: Colors.blueGrey, fontSize: 15),
           suffixIcon: widget.ispassword == true
               ? InkWell(
                   onTap: () {

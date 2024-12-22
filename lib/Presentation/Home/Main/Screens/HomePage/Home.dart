@@ -1,10 +1,12 @@
 import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
 
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Search_Function/SearchFunction.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Search_Function/search_screen/search_screen_page.dart';
 // import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../../../Componanats/Colors.dart';
 import '../../Bannar_List/Bannar_List.dart';
@@ -36,8 +38,9 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        showSearch(
-                            context: context, delegate: Searchfunction());
+                        // showSearch(
+                        //     context: context, delegate: Searchfunction());
+                        Get.to(() => SearchScreenPage());
                       },
                       child: Container(
                         height: 60,

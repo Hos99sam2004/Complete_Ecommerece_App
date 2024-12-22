@@ -9,5 +9,5 @@ class ApiConst {
   static const String PRODUCTS = "products";
   static const String FAVORITES = "favorites";
   static const String PROFILE = "profile";
-  // static  String Access_TOKEN = CacheHelper.getData(key: "token");
+  static const String SEARCH = "products/search";
 }

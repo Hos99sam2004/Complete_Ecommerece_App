@@ -11,7 +11,10 @@ import 'package:complete_e_commerce_app/Presentation/Home/Models/Products_Model.
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/FavoritesPage/Favorites.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/HomePage/Home.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/PersonalDetails/Person_Details.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Models/Search_model.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Models/model/model..profile.dart';
+// import 'package:complete_e_commerce_app/Presentation/Home/Models/model/search/search.dart';
+// import 'package:complete_e_commerce_app/Presentation/Home/Models/search_products/search_products.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -188,6 +191,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   // GetFavorites getProfileData = GetFavorites();
   Model modelprofiles = new Model();
+
   void getProfile() async {
     emit(HomeProfileLoading());
     try {

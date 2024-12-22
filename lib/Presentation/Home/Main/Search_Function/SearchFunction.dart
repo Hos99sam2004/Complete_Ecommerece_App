@@ -9,6 +9,7 @@ class Searchfunction extends SearchDelegate {
     "Sara",
     "Nada",
     "Mahmoud",
+    "Nasr"
   ];
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -32,6 +33,7 @@ class Searchfunction extends SearchDelegate {
         Close;
       },
     );
+    // return null;
   }
 
   @override
@@ -43,10 +45,11 @@ class Searchfunction extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     List filterList = names
         .where(
-          (element) => element.startsWith(query),
+          (element) => element.contains(query),
         )
         .toList();
-    return ListView.builder(
+    return ListView.separated(
+      separatorBuilder: (context, index) => Divider(),
       itemCount: query == "" ? names.length : filterList.length,
       itemBuilder: (context, index) {
         return InkWell(

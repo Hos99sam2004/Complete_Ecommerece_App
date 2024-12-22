@@ -4,6 +4,7 @@ import 'package:complete_e_commerce_app/Presentation/Auth/Sign_up/Cubit/sign_cub
 import 'package:complete_e_commerce_app/Presentation/Helper/Cache_Helper.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Cubit/home_cubit.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/MainHome.dart';
+import 'package:complete_e_commerce_app/Presentation/Home/Main/Search_Function/search_screen/search/search_cubit.dart';
 // import 'dart:async';
 import 'package:complete_e_commerce_app/Presentation/SplashScreens/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ void main() async {
   } else {
     widget = Homepage();
   }
+  print(token);
 
   runApp(MyApp(
     startwidget: widget,
@@ -46,6 +48,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<SignCubit>(
             create: (context) => SignCubit(),
+          ),
+          BlocProvider<SearchCubit>(
+            create: (context) => SearchCubit(),
           ),
           BlocProvider<HomeCubit>(
               create: (context) => HomeCubit()

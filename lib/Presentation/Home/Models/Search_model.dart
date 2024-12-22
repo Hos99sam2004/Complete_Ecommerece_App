@@ -1,8 +1,9 @@
 class SearchModel {
   SearchModel({
-      this.status, 
-      this.message, 
-      this.data,});
+    this.status,
+    this.message,
+    this.data,
+  });
 
   SearchModel.fromJson(dynamic json) {
     status = json['status'];
@@ -22,22 +23,22 @@ class SearchModel {
     }
     return map;
   }
-
 }
 
 class Data {
   Data({
-      this.data,});
+    this.data,
+  });
 
   Data.fromJson(dynamic json) {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data?.add(Data.fromJson(v));
+        data?.add(Search.fromJson(v));
       });
     }
   }
-  List<Data>? data;
+  List<Search>? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -46,21 +47,21 @@ class Data {
     }
     return map;
   }
-
 }
 
-class Data {
-  Data({
-      this.id, 
-      this.price, 
-      this.image, 
-      this.name, 
-      this.description, 
-      this.images, 
-      this.inFavorites, 
-      this.inCart,});
+class Search {
+  Search({
+    this.id,
+    this.price,
+    this.image,
+    this.name,
+    this.description,
+    this.images,
+    this.inFavorites,
+    this.inCart,
+  });
 
-  Data.fromJson(dynamic json) {
+  Search.fromJson(dynamic json) {
     id = json['id'];
     price = json['price'];
     image = json['image'];
@@ -91,5 +92,4 @@ class Data {
     map['in_cart'] = inCart;
     return map;
   }
-
 }

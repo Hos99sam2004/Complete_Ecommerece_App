@@ -11,6 +11,7 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         body: Stack(
       children: [
@@ -51,8 +52,8 @@ class Homepage extends StatelessWidget {
                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                   style: TextStyle(fontSize: 18),
                 ),
-                const SizedBox(
-                  height: 450,
+                SizedBox(
+                  height: screenHeight * 0.46,
                 ),
                 Image.asset("assets/pointers0.png"),
                 const SizedBox(

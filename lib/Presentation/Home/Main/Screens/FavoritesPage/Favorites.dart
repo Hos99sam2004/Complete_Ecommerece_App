@@ -9,6 +9,8 @@ class Favorites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     final cubit = context.read<HomeCubit>();
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       final fav = cubit.getFavorites.data?.data;
@@ -35,23 +37,26 @@ class Favorites extends StatelessWidget {
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) => InkWell(
                       onTap: () {},
-                      child: _FavBuilder(fav[index], index, cubit)),
+                      child: _FavBuilder(fav![index], index, cubit, screenWidth,
+                          screenHeight)),
                   separatorBuilder: (context, index) => Divider(),
-                  itemCount: fav!.length),
+                  itemCount: fav?.length ?? 0),
             ),
           ),
         );
     });
   }
 
-  Container _FavBuilder(FavoriteData model, index, cubit) {
+  Container _FavBuilder(FavoriteData model, index, cubit, double screenWidth,
+      double screenHeight) {
     return Container(
+      width: screenWidth,
       child: Row(
         children: [
           Image.network(
             model.product!.image ?? "",
-            width: 150,
-            height: 170,
+            width: screenWidth * 0.32,
+            height: screenHeight * 0.34,
           ),
           SizedBox(
             width: 20,
@@ -59,9 +64,9 @@ class Favorites extends StatelessWidget {
           Column(
             children: [
               Container(
-                  width: 150,
+                  width: screenWidth * 0.37,
                   child: Text(model.product!.name.toString(),
-                      overflow: TextOverflow.fade,
+                      overflow: TextOverflow.ellipsis,
                       softWrap: true,
                       style: TextStyle(
                         fontSize: 18,
@@ -77,7 +82,7 @@ class Favorites extends StatelessWidget {
 
                   cubit.ChangeFavor(model.product!.id);
                 },
-                icon: cubit.favoritelist[model.product!.id]
+                icon: cubit.favoritelist[model.product!.id] == true
                     ? Icon(Icons.favorite, color: Colors.red, size: 33)
                     : Icon(
                         Icons.favorite_outline,

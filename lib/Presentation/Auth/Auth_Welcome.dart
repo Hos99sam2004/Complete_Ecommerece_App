@@ -11,15 +11,18 @@ class AuthWelcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        height: double.infinity,
+        height: screenHeight,
+        width: screenWidth,
         child: Stack(
           children: [
             Image.asset(
                 'assets/beautiful-female-with-shopping-cart-walking-by-supermarket-freezer-choosing-what-buy 1.png'),
             Positioned(
-                top: 68,
+                top: screenHeight * 0.03,
                 left: 40,
                 child: IconButton(
                     onPressed: () {
@@ -32,17 +35,17 @@ class AuthWelcome extends StatelessWidget {
                       size: 30,
                     ))),
             Positioned(
-                top: 63,
+                top: screenHeight * 0.039,
                 left: 163,
                 child: Text(
                   "Welcome",
                   style: TextStyle(fontSize: 25, color: Colors.white),
                 )),
             Positioned(
-              top: 538,
+              top: screenHeight * 0.59,
               child: Container(
-                height: 358,
-                width: 414,
+                height: screenHeight,
+                width: screenWidth,
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: backgraund2,

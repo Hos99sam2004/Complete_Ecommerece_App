@@ -29,6 +29,8 @@ class _SignUpState extends State<SignUp> {
   GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return BlocListener<SignCubit, SignState>(
       listener: (context, state) {
         // TODO: implement listener
@@ -49,13 +51,14 @@ class _SignUpState extends State<SignUp> {
       },
       child: Scaffold(
         body: Container(
-          height: double.infinity,
+          height: screenHeight,
+          width: screenWidth,
           child: Stack(
             children: [
               Image.asset(
                   'assets/portrait-female-person-supermarket-holding-fruit-smiling 1.png'),
               Positioned(
-                  top: 68,
+                  top: screenHeight * 0.03,
                   left: 40,
                   child: IconButton(
                       onPressed: () {
@@ -69,19 +72,19 @@ class _SignUpState extends State<SignUp> {
                         color: Colors.white,
                         size: 30,
                       ))),
-              const Positioned(
-                  top: 63,
+              Positioned(
+                  top: screenHeight * 0.04,
                   left: 163,
                   child: Text(
                     "Welcome",
                     style: TextStyle(fontSize: 25, color: Colors.white),
                   )),
               Positioned(
-                top: 400,
+                top: screenHeight * 0.45,
                 child: SingleChildScrollView(
                   child: Container(
-                    height: 486,
-                    width: 414,
+                    height: screenHeight,
+                    width: screenWidth,
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: backgraund2,

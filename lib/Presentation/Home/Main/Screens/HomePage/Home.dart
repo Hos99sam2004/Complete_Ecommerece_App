@@ -17,6 +17,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     final cubit = context.read<HomeCubit>();
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
@@ -43,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                         Get.to(() => SearchScreenPage());
                       },
                       child: Container(
-                        height: 60,
+                        height: screenHeight * 0.07,
                         decoration: BoxDecoration(
                           color: backgraund2,
                           borderRadius: BorderRadius.circular(10),
@@ -104,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                         return Center(child: CircularProgressIndicator());
                       } else {
                         return Container(
-                          height: 120,
+                          height: screenHeight * 0.15,
                           color: backgraund2,
                           child: ListView.builder(
                               physics: const BouncingScrollPhysics(),

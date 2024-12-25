@@ -12,6 +12,8 @@ class CleintDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     final cubit = context.read<HomeCubit>();
     List DataList = [
       buildListTile(
@@ -81,43 +83,45 @@ class CleintDetails extends StatelessWidget {
       ),
       body: Container(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Container(
-                  height: 150,
-                  width: 150,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.greenAccent,
-                  ),
-                  child: cubit.modelprofiles.data?.image != null
-                      ? Image.network(cubit.modelprofiles.data!.image!)
-                      : Center(
-                          child: CupertinoActivityIndicator(),
-                        ),
-                ),
-              ),
-              ...List.generate(
-                DataList.length,
-                (index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Screens[index]));
-                    },
-                    child: Card(
-                      child: DataList[index],
+          child: ListView(children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Container(
+                    height: screenHeight * 0.17,
+                    width: screenWidth * 0.5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.greenAccent,
                     ),
-                  );
-                },
-              ),
-            ],
-          ),
+                    child: cubit.modelprofiles.data?.image != null
+                        ? Image.network(cubit.modelprofiles.data!.image!)
+                        : Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
+                  ),
+                ),
+                ...List.generate(
+                  DataList.length,
+                  (index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Screens[index]));
+                      },
+                      child: Card(
+                        child: DataList[index],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ]),
         ),
       ),
     );

@@ -11,7 +11,7 @@ import 'package:complete_e_commerce_app/Presentation/Home/Models/Products_Model.
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/FavoritesPage/Favorites.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/HomePage/Home.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Main/Screens/PersonalDetails/Person_Details.dart';
-import 'package:complete_e_commerce_app/Presentation/Home/Models/Search_model.dart';
+// import 'package:complete_e_commerce_app/Presentation/Home/Models/Search_model.dart';
 import 'package:complete_e_commerce_app/Presentation/Home/Models/model/model..profile.dart';
 // import 'package:complete_e_commerce_app/Presentation/Home/Models/model/search/search.dart';
 // import 'package:complete_e_commerce_app/Presentation/Home/Models/search_products/search_products.dart';
@@ -134,9 +134,9 @@ class HomeCubit extends Cubit<HomeState> {
   ChangeFavoriets changeFavorietsmodels = ChangeFavoriets();
 
   void ChangeFavor(
-    int Id_Product,
+    int? Id_Product,
   ) async {
-    favoritelist[Id_Product] = !favoritelist[Id_Product]!;
+    favoritelist[Id_Product!] = !favoritelist[Id_Product]!;
     emit(HomeFavoritesSuccess());
     // print(favoritelist[Id_Product]);
     // print(favoritelist);
@@ -156,14 +156,13 @@ class HomeCubit extends Cubit<HomeState> {
         emit(HomeFavoritesSuccess());
       } else {
         ShowToast(
-            text: changeFavorietsmodels.message!, state: ToastState.ERROR);
+            text: changeFavorietsmodels.message!, state: ToastState.WARNING);
+        favoritelist[Id_Product] = !favoritelist[Id_Product]!;
         emit(HomeFavoritesError("Error"));
       }
     } catch (e) {
-      ShowToast(
-          text: changeFavorietsmodels.message!, state: ToastState.WARNING);
+      ShowToast(text: changeFavorietsmodels.message!, state: ToastState.ERROR);
       emit(HomeFavoritesError("$e"));
-      // TODO
     }
   }
 

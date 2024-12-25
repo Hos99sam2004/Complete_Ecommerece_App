@@ -5,6 +5,7 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Padding(
@@ -15,9 +16,9 @@ class Page2 extends StatelessWidget {
               Image.asset(
                 "assets/Delivery-cuate 1.png",
                 width: 400,
-                height: 400,
+                height: screenHeight * 0.420,
               ),
-              const SizedBox(height: 100),
+              SizedBox(height: screenHeight * 0.16),
               const Text(
                 "Fast Delivary",
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),

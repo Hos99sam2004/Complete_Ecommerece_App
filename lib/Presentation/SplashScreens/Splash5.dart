@@ -21,6 +21,7 @@ class _Splash5State extends State<Splash5> {
   int? count;
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -29,7 +30,7 @@ class _Splash5State extends State<Splash5> {
             children: [
               const SizedBox(height: 50),
               SizedBox(
-                height: 660,
+                height: screenHeight * 0.75,
                 child: PageView(
                   controller: _controller,
                   children: const [
